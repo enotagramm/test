@@ -1,5 +1,5 @@
-# Создайте класс точка Point, позволяющий работать с координатами (x, y).
-# Добавьте необходимые методы класса.
+import math as mt
+
 
 class Point:
 
@@ -7,13 +7,21 @@ class Point:
         self.x = x
         self.y = y
 
-    def get_coords(self):
-        return self.x, self.y
+    def getx(self):
+        return self.x
+
+    def gety(self):
+        return self.y
+
+    def get_len(self, other):
+        self.x = self.x - other.x
+        self.y = self.y - other.y
+        l1 = mt.sqrt((self.x ** 2) + (self.y ** 2))
+        return l1
 
 
-pt = Point(1, 2)
-print(pt.get_coords())
-
-print(pt.__dict__) # либо так, не совсем понял, что от меня требуется
+pt1 = Point(0, 0)
+pt2 = Point(3, 4)
+print(Point.get_len(pt1, pt2))
 
 
