@@ -1,27 +1,19 @@
 import json
 
-# data = {
-#     'testl': 'testp'
-# }
-# with open('data.json', 'w') as f:
-#     json.dump(data, f)
 
-
-class Models:
-    with open('data.json', 'r') as f:
-        data = json.load(f)
-    title = 'Какой-то заголовок'
-    text = 'Какой-то текст'
-    author = 'Какой-то автор'
+class Model:
+    def __init__(self, title='1', text='2', author='3'):
+        self.title = title
+        self.text = text
+        self.author = author
 
     def save(self):
-        self.data['title'] = self.title
-        self.data['text'] = self.text
-        self.data['author'] = self.author
         with open('data.json', 'w') as f:
-            json.dump(self.data, f)
+            json.dump(json.dumps(self.__dict__), f)
+        with open('data.json') as f:
+            print(f.read())
 
 
-d = Models()
-print(d.save())
-print(list(filter(lambda x: not x.startswith('_'), dir(d))))
+c1 = Model('Hi')
+print(c1.save())
+print(dir(c1))
